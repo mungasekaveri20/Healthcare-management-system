@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
+
+
+
+                <div>
+                <p>Patient Records</p>
+                    <table style="margin-left: 25%" class="table table-dark table-striped table-bordered table-hover">
+                        <tr>
+                            <th scope="col">Patient ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Phone number</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">SSN</th>
+                            <th scope="col">Insurance</th>
+                        </tr>
+                            {% for object in object_list %}
+
+                        <tr onclick="document.location = '{% url "view-record" pk=user.pk  %}';" >
+                            <th scope="row" >  {{object.pk}} </th>
+                            <td>{{ object.patient.get_full_name }}</td>
+                            <td>{{ object.Pat.profile.patientAddress }}</td>
+                            <td>{{ object.patientPhone }}</td>
+                            <td>{{ object.patient.email }}</td>
+                            <td>{{ object.patientSSN }}</td>
+                            <td>{{ object.patientInsurance }}</td>
+                        </tr>
+
+                             {% endfor %}
+
+                    </table>
+                </div>
+
+
+{% endblock content %}
